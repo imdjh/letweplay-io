@@ -16,10 +16,10 @@ else
 fi
 
 if ( $(echo ${WEPLAY_IO_URL} | grep -q BAD ) );then
-    echo "IO_URL_PORT is missing, can't start IO server." >&2 && exit 1
+    echo "THIS_URL_PORT is missing, can't start IO server." >&2 && exit 1
 fi
 
-forever start /srv/weplay-web/index.js
+forever start /srv/weplay/index.js
 forever start /srv/weplay-presence/index.js
 
 # MAGIC
