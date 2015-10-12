@@ -4,8 +4,8 @@
 export WEPLAY_PORT=3001
 export WEPLAY_SERVER_UID=1337
 export WEPLAY_IP_THROTTLE=${CONTROLDELAY:-50}
-export WEPLAY_INTERVAL="${COUNTERDELAY:-5000}"
-export WEPLAY_IO_URL="http://${ENTRY:-BAD}:3001"
+export WEPLAY_INTERVAL="${COUNTERDELAY:-12000}"
+export WEPLAY_IO_URL="${THIS_URL_PORT:-BAD}"
 
 if [[ -n "${REDIS_PORT}" ]];then
     export WEPLAY_REDIS_URI=${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}
@@ -16,7 +16,7 @@ else
 fi
 
 if ( $(echo ${WEPLAY_IO_URL} | grep -q BAD ) );then
-    echo "ENTRY setting not found, can't start server." >&2 && exit 1
+    echo "IO_URL_PORT is missing, can't start IO server." >&2 && exit 1
 fi
 
 forever start /srv/weplay-web/index.js
