@@ -2,11 +2,11 @@ FROM node:0.10
 MAINTAINER Jiahao Dai <dyejarhoo@gmail.com>
 
 # Run make generate main.js; not mention in Readme.md
-RUN git clone https://github.com/imdjh/weplay-presence /srv/weplay-presence && \
+RUN git clone --depth=1 https://github.com/imdjh/weplay-presence /srv/weplay-presence && \
         cd /srv/weplay-presence && \
         npm install
 
-RUN git clone https://github.com/imdjh/weplay /srv/weplay && \
+RUN git clone --depth=1 https://github.com/imdjh/weplay /srv/weplay && \
         cd /srv/weplay && \
         npm install && \
         npm install forever -g
